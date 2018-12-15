@@ -1,5 +1,5 @@
-[![Gem Version](https://badge.fury.io/rb/rubyflare.svg)](https://badge.fury.io/rb/rubyflare) [![Code Climate](https://codeclimate.com/github/trev/rubyflare/badges/gpa.svg)](https://codeclimate.com/github/trev/rubyflare) [![Test Coverage](https://codeclimate.com/github/trev/rubyflare/badges/coverage.svg)](https://codeclimate.com/github/trev/rubyflare/coverage) [![Build Status](https://travis-ci.org/trev/rubyflare.svg?branch=master)](https://travis-ci.org/trev/rubyflare)
-# Rubyflare
+[![Gem Version](https://badge.fury.io/rb/CloudParty.svg)](https://badge.fury.io/rb/rubyflare) [![Code Climate](https://codeclimate.com/github/trev/rubyflare/badges/gpa.svg)](https://codeclimate.com/github/trev/rubyflare) [![Test Coverage](https://codeclimate.com/github/trev/rubyflare/badges/coverage.svg)](https://codeclimate.com/github/trev/rubyflare/coverage) [![Build Status](https://travis-ci.org/trev/rubyflare.svg?branch=master)](https://travis-ci.org/trev/rubyflare)
+# CloudParty
 
 Super thin Ruby wrapper for Cloudflare's V4 API.
 
@@ -29,13 +29,13 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 ```
   require 'rubyflare'
-  
-  connection = Rubyflare.connect_with('bear@dog.com', 'supersecretapikey')
+
+  connection = CloudParty.connect_with('bear@dog.com', 'supersecretapikey')
 ```
 
 #### GET your user account details
 
-```
+```ruby
   user = connection.get('user')
 
   # Read the first result
@@ -47,7 +47,7 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 #### Update(PATCH) your user account
 
-```
+```ruby
   user = connection.patch('user', { first_name: 'Bear' })
 
   # Read the first result
@@ -56,7 +56,7 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 #### GET all your zones
 
-```
+```ruby
   zones = connection.get('zones')
 
   # Read the first zone
@@ -68,7 +68,7 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 #### Create(POST) a new zone (domain)
 
-```
+```ruby
   zone = connection.post('zones', { name: 'supercooldomain.com' })
 
   # Check it out
@@ -77,13 +77,13 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 #### Add(POST) an A Record to the zone
 
-```
+```ruby
   dns_record = connection.post('zones/{#zone.result[:id]}/dns_records', {
                                type: 'A',
                                name: 'supercooldomain.com',
                                content: '127.0.0.1'
                                })
-  
+
   # Check it out
   p dns_record.result
 ```
@@ -92,7 +92,7 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 ```
   deleted_zone = connection.delete('zones/#{zone.result[:id]}')
-  
+
   # Check out the response
   p deleted_zone
 ```
@@ -122,4 +122,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/trev/r
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
