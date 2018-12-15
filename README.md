@@ -1,7 +1,7 @@
-[![Gem Version](https://badge.fury.io/rb/CloudParty.svg)](https://badge.fury.io/rb/rubyflare)
-[![Code Climate](https://codeclimate.com/github/trev/rubyflare/badges/gpa.svg)](https://codeclimate.com/github/trev/rubyflare)
-[![Test Coverage](https://codeclimate.com/github/trev/rubyflare/badges/coverage.svg)](https://codeclimate.com/github/trev/rubyflare/coverage)
-[![Build Status](https://travis-ci.org/trev/rubyflare.svg?branch=master)](https://travis-ci.org/trev/rubyflare)
+[![Gem Version](https://badge.fury.io/rb/cloud_party.svg)](https://badge.fury.io/rb/cloud_party)
+[![Code Climate](https://codeclimate.com/github/IotaSpencer/cloud_party/badges/gpa.svg)](https://codeclimate.com/github/IotaSpencer/cloud_party)
+[![Test Coverage](https://codeclimate.com/github/IotaSpencer/cloud_party/badges/coverage.svg)](https://codeclimate.com/github/IotaSpencer/cloud_party/coverage)
+[![Build Status](https://travis-ci.org/IotaSpencer/cloud_party.svg?branch=master)](https://travis-ci.org/IotaSpencer/cloud_party)
 # CloudParty
 
 Super thin Ruby wrapper for Cloudflare's V4 API.
