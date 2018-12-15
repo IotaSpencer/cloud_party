@@ -1,4 +1,7 @@
-[![Gem Version](https://badge.fury.io/rb/CloudParty.svg)](https://badge.fury.io/rb/rubyflare) [![Code Climate](https://codeclimate.com/github/trev/rubyflare/badges/gpa.svg)](https://codeclimate.com/github/trev/rubyflare) [![Test Coverage](https://codeclimate.com/github/trev/rubyflare/badges/coverage.svg)](https://codeclimate.com/github/trev/rubyflare/coverage) [![Build Status](https://travis-ci.org/trev/rubyflare.svg?branch=master)](https://travis-ci.org/trev/rubyflare)
+[![Gem Version](https://badge.fury.io/rb/CloudParty.svg)](https://badge.fury.io/rb/rubyflare)
+[![Code Climate](https://codeclimate.com/github/trev/rubyflare/badges/gpa.svg)](https://codeclimate.com/github/trev/rubyflare)
+[![Test Coverage](https://codeclimate.com/github/trev/rubyflare/badges/coverage.svg)](https://codeclimate.com/github/trev/rubyflare/coverage)
+[![Build Status](https://travis-ci.org/trev/rubyflare.svg?branch=master)](https://travis-ci.org/trev/rubyflare)
 # CloudParty
 
 Super thin Ruby wrapper for Cloudflare's V4 API.
@@ -8,16 +11,20 @@ Super thin Ruby wrapper for Cloudflare's V4 API.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rubyflare'
+gem 'cloud_party'
 ```
 
 And then execute:
 
-    $ bundle
+```shell
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install rubyflare
+```shell
+$ gem install cloud_party
+```
 
 ## Usage
 
@@ -27,85 +34,84 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 #### Setup connection
 
-```
-  require 'rubyflare'
-
-  connection = CloudParty.connect_with('bear@dog.com', 'supersecretapikey')
+```ruby
+require 'cloud_party'
+connection = CloudParty.connect_with('bear@dog.com', 'supersecretapikey')
 ```
 
 #### GET your user account details
 
 ```ruby
-  user = connection.get('user')
+ user = connection.get('user')
 
-  # Read the first result
-  p user.result
+# Read the first result
+p user.result
 
-  # Read your first name
-  p user.result[:first_name]
+# Read your first name
+p user.result[:first_name]
 ```
 
 #### Update(PATCH) your user account
 
 ```ruby
-  user = connection.patch('user', { first_name: 'Bear' })
+user = connection.patch('user', { first_name: 'Bear' })
 
-  # Read the first result
-  p user.result
+# Read the first result
+p user.result
 ```
 
 #### GET all your zones
 
 ```ruby
-  zones = connection.get('zones')
+zones = connection.get('zones')
 
-  # Read the first zone
-  p zones.result
+# Read the first zone
+p zones.result
 
-  # Read the array of zones. Pluralize #result
-  p zones.results
+# Read the array of zones. Pluralize #result
+p zones.results
 ```
 
 #### Create(POST) a new zone (domain)
 
 ```ruby
-  zone = connection.post('zones', { name: 'supercooldomain.com' })
+zone = connection.post('zones', { name: 'supercooldomain.com' })
 
-  # Check it out
-  p zone.result
+# Check it out
+p zone.result
 ```
 
 #### Add(POST) an A Record to the zone
 
 ```ruby
-  dns_record = connection.post('zones/{#zone.result[:id]}/dns_records', {
-                               type: 'A',
-                               name: 'supercooldomain.com',
-                               content: '127.0.0.1'
-                               })
+dns_record = connection.post('zones/{#zone.result[:id]}/dns_records', {
+                             type: 'A',
+                             name: 'supercooldomain.com',
+                             content: '127.0.0.1'
+                             })
 
-  # Check it out
-  p dns_record.result
+# Check it out
+p dns_record.result
 ```
 
 #### DELETE a zone
 
-```
-  deleted_zone = connection.delete('zones/#{zone.result[:id]}')
+```ruby
+deleted_zone = connection.delete('zones/#{zone.result[:id]}')
 
-  # Check out the response
-  p deleted_zone
+# Check out the response
+p deleted_zone
 ```
 
 #### Catch errors
 
-```
-  begin
-    connection.get('user')
-  rescue => e
-    # Inspect e.reponse for more details
-    p e.response
-  end
+```ruby
+begin
+  connection.get('user')
+rescue => e
+  # Inspect e.reponse for more details
+  p e.response
+end
 ```
 
 ## Development
