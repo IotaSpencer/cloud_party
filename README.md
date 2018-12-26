@@ -34,9 +34,23 @@ First off, open https://api.cloudflare.com/ to see all the available endpoints
 
 #### Setup connection
 
+Two configurations are applicable for setup currently,
+
+
+<details>
+  <summary>$HOME/.cloud_party/config or /etc/cloud_party/config</summary>
+    <p markdown="1">
+
+```yaml
+email: 'email@here.com'
+api-key: 'abcdefabcdef1234561234567890'
+```
+</p>
+</details>
+
 ```ruby
 require 'cloud_party'
-connection = CloudParty.connect_with('bear@dog.com', 'supersecretapikey')
+connection = CloudParty.connect
 ```
 
 #### GET your user account details

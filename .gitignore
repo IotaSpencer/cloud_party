@@ -10,4 +10,6 @@
 /fixtures/
 /vendor/
 /.idea/
+/.vscode/
+
 /Deskfile

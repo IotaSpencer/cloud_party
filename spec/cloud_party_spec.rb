@@ -1,5 +1,6 @@
-describe CloudParty do
+# frozen_string_literal: true
 
+describe CloudParty do
   describe '.connect_with' do
     subject(:connection) { described_class.connect_with('bear@dog.com', 'superapikey') }
 

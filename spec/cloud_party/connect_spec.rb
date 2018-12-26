@@ -1,12 +1,12 @@
-describe CloudParty::Connect do
+# frozen_string_literal: true
 
+describe CloudParty::Connect do
   let(:email)   { ENV['CLOUDFLARE_EMAIL'] }
   let(:api_key) { ENV['CLOUDFLARE_API_KEY'] }
 
   subject(:connection) { described_class.new(email, api_key) }
 
   describe '#initialize' do
-
     it 'stores the supplied email and api_key as instance variables' do
       expect(connection.instance_variable_get(:@email)).to eq email
       expect(connection.instance_variable_get(:@api_key)).to eq api_key
@@ -18,9 +18,7 @@ describe CloudParty::Connect do
   end
 
   describe '#get' do
-
     context 'with valid credentials' do
-
       context 'and a valid endpoint' do
         it 'returns an intance of CloudParty::Response' do
           expect(connection.get('user')).to be_a CloudParty::Response
@@ -33,7 +31,7 @@ describe CloudParty::Connect do
         end
       end
     end
-    
+
     context 'with invalid credentials' do
       let(:email)   { 'bear@dog.com' }
       let(:api_key) { 'superapikey' }

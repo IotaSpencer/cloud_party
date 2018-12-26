@@ -1,6 +1,8 @@
-require "codeclimate-test-reporter"
+# frozen_string_literal: true
+
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'cloud_party'
 
 RSpec.configure do |config|

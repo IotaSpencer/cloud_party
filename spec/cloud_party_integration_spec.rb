@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe 'integration' do
   describe CloudParty, order: :defined do
     context 'given I have valid Cloudflare credentials' do
@@ -8,7 +10,6 @@ describe 'integration' do
         let(:connection) { described_class.connect_with(email, api_key) }
 
         context 'and GET my Cloudflare user details' do
-
           it 'should return a valid response' do
             response = connection.get('user')
             expect(response).to be_successful
@@ -16,9 +17,8 @@ describe 'integration' do
         end
 
         context 'and update(PATCH) my user details' do
-
           it 'should return a valid response' do
-            response = connection.patch('user', { first_name: 'Trevor' })
+            response = connection.patch('user', first_name: 'Trevor')
             expect(response).to be_successful
           end
         end

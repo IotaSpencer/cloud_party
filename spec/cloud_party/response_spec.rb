@@ -1,12 +1,12 @@
-describe CloudParty::Response do
+# frozen_string_literal: true
 
+describe CloudParty::Response do
   let(:method_name) { :get }
   let(:endpoint) { 'user' }
-  let(:response) { { success: true }.to_json } 
+  let(:response) { { success: true }.to_json }
   subject { described_class.new(method_name, endpoint, response) }
 
   describe '#initialize' do
-
     context 'with a successful response' do
       it "returns an instance of #{described_class}" do
         expect(subject).to be_a described_class
