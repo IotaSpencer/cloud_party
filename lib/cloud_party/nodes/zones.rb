@@ -4,7 +4,7 @@ require 'cloud_party/context'
 require 'cloud_party/responses'
 module CloudParty
   module Nodes
-    class IPs
+    class Zones
       include CloudParty::Context
       include HTTParty
       base_uri 'api.cloudflare.com:443/client/v4'
@@ -19,7 +19,11 @@ module CloudParty
       end
 
       def list
-        CloudParty::Responses::IPs.new(:get, '/ips', self.class.get('/ips'), @options)
+        CloudParty::Responses::Zones.new(:get, '/zones', self.class.get('/zones'), @options)
+      end
+
+      def get(id)
+        CloudParty::Responses::Zones.new(:get, '/zones/:id', self.class.get("/zones/#{id}"), @options)
       end
     end
   end

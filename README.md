@@ -1,10 +1,12 @@
+# CloudParty
+HTTParty based library for Cloudflare
+
+
 [![Gem Version](https://badge.fury.io/rb/cloud_party.svg)](https://badge.fury.io/rb/cloud_party)
 [![Code Climate](https://codeclimate.com/github/IotaSpencer/cloud_party/badges/gpa.svg)](https://codeclimate.com/github/IotaSpencer/cloud_party)
 [![Test Coverage](https://codeclimate.com/github/IotaSpencer/cloud_party/badges/coverage.svg)](https://codeclimate.com/github/IotaSpencer/cloud_party/coverage)
 [![Build Status](https://travis-ci.org/IotaSpencer/cloud_party.svg?branch=master)](https://travis-ci.org/IotaSpencer/cloud_party)
-# CloudParty
 
-Super thin Ruby wrapper for Cloudflare's V4 API.
 
 ## Installation
 
@@ -98,7 +100,7 @@ p zone.result
 #### Add(POST) an A Record to the zone
 
 ```ruby
-dns_record = connection.post('zones/{#zone.result[:id]}/dns_records', {
+dns_record = connection.post('zones/#!{#zone.result[:id]}/dns_records', {
                              type: 'A',
                              name: 'supercooldomain.com',
                              content: '127.0.0.1'
@@ -111,7 +113,7 @@ p dns_record.result
 #### DELETE a zone
 
 ```ruby
-deleted_zone = connection.delete('zones/#{zone.result[:id]}')
+deleted_zone = connection.delete('zones/#!{zone.result[:id]}')
 
 # Check out the response
 p deleted_zone
@@ -123,7 +125,7 @@ p deleted_zone
 begin
   connection.get('user')
 rescue => e
-  # Inspect e.reponse for more details
+  # Inspect e.response for more details
   p e.response
 end
 ```
@@ -138,7 +140,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/trev/rubyflare. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
+## Legal
 
+cloud_party, its developers, and other collaborators are not affiliated with nor endorsed by Cloudflare unless explicitly
+noted
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

@@ -1,4 +1,5 @@
 # Available cops (428) + config for /home/ken/everygit/cloudflare_cli: 
+# Available cops (428) + config for /home/ken/everygit/cloudflare_cli:
 # Department 'Bundler' (4):
 Bundler/DuplicatedGem:
   Description: Checks for duplicate gem entries in Gemfile.
@@ -866,7 +867,7 @@ Lint/FormatParameterMismatch:
 Lint/HandleExceptions:
   Description: Don't suppress exception.
   StyleGuide: "#dont-hide-exceptions"
-  Enabled: true
+  Enabled: false
 
 Lint/ImplicitStringConcatenation:
   Description: Checks for adjacent string literals on the same line, which could better

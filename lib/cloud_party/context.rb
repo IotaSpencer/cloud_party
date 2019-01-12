@@ -3,13 +3,11 @@
 require 'httparty'
 require 'cloud_party/config'
 module CloudParty
-  class Context
-    attr_reader :cfg
-    define_singleton_method(:cfg) do
-      CloudParty::Config.new
-    end
-    def self.inherited(subclass)
-      # I don't know yet
+  module Context
+    def self.included(base)
+      base.define_singleton_method(:cfg) do
+        CloudParty::Config.new
+      end
     end
   end
 end

@@ -2,5 +2,8 @@
 
 require 'cloud_party/exception'
 module CloudParty
-  autoload :BadRequestError, 'cloud_party/exceptions/bad_request_400'
+  module Errors
+    autoload :UnRecognizedResultTypeError, 'cloud_party/exceptions/un_recognized_result_type_error'
+    autoload :BadRequestError, 'cloud_party/exceptions/bad_request_400'
+  end
 end

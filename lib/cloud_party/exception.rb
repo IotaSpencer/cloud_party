@@ -30,10 +30,16 @@ module CloudParty
       [error_string.squish, extra_string].join("\n")
     end
 
-    def self.extra_string; end
+    def self.extra_string
+      # This method should be overridden
+    end
 
-    def self.error_string; end
+    # override error_string to provide your own error_string
+    def self.error_string
+      # This method should be overridden
+    end
   end
+
   class UnknownError < RequestError
     def initialize(obj:, method:, response:, endpoint: nil, code:)
       super

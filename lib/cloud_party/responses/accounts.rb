@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-# require 'cloud_party/responses/nodes/ips'
+require 'cloud_party/responses/nodes/accounts'
 module CloudParty
   module Responses
-    #
-    class IPs
-      def initialize(method_name, endpoint, response, options)
+    class Accounts
+      def initialize(method_name, endpoint, response)
         @code = response.code
         @body = JSON.parse(response.body, symbolize_names: true)
         @success = @body[:success]
@@ -18,12 +17,10 @@ module CloudParty
           raise CloudParty::APIError.new(message, response)
         end
 
-        # @results = []
-        # @body[:result].each do |res|
-        #   @results << CloudParty::Responses::Result.new(res)
-        # end
-        @result = CloudParty::Responses::Result.new(@body[:result])
-        @results = [@result]
+        @results = []
+        @body[:result].each do |res|
+          @results << CloudParty::Responses::Result.new(res)
+        end
         @errors = []
         @body[:errors].each do |err|
           @errors << CloudParty::Responses::Error.new(err)
@@ -34,9 +31,6 @@ module CloudParty
         end
       end
 
-      def code
-        @code
-      end
       def successful?
         @success
       end
@@ -66,18 +60,38 @@ module CloudParty
       end
     end
     class Result
-      attr_reader :ipv4_cidrs, :ipv6_cidrs
       def initialize(result)
         @result = result
         @result.each do |k, v|
+          next if k == :permissions
+          next if k == :account
+
           instance_variable_set(:"@#{k}", v)
         end
       end
 
+      def account
+        CloudParty::Responses::Node::Account.new(@result[:account])
+      end
 
+      def permissions
+        CloudParty::Responses::Node::Permissions.new(@result[:permissions])
+      end
+
+      def status
+        @status
+      end
+
+      def roles
+        @roles
+      end
+
+      def id
+        @id
+      end
 
       def inspect
-        wanted = %i[ipv4_cidrs ipv6_cidrs]
+        wanted = %i[permissions account status roles id]
         outputs = []
         wanted.each do |m|
           outputs << "#{m.to_s}=#{send(m)}"

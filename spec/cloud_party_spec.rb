@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 describe CloudParty do
-  describe '.connect_with' do
-    subject(:connection) { described_class.connect_with('bear@dog.com', 'superapikey') }
+  describe '.context_connect' do
+    subject(:connection) { described_class.context_connect }
 
-    it 'creates an instance of RubyFlare::Connect with passed arguments' do
-      expect(CloudParty::Connect).to receive(:new).with('bear@dog.com', 'superapikey')
-      connection
+    it 'should not respond to .new' do
+      expect(CloudParty::Context).to_not respond_to :new
     end
 
-    it 'returns an instance of CloudParty::Connect' do
-      expect(connection).to be_a(CloudParty::Connect)
+    it 'returns an instance of CloudParty::Context' do
+      expect(connection).to be_a(CloudParty::Context)
     end
   end
 end

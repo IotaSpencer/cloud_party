@@ -31,10 +31,14 @@ class String
   end
 end
 module CloudParty
+  autoload :Errors, 'cloud_party/exceptions'
+  class Connection
+    include CloudParty::Context
+  end
   def self.simple_connect
     CloudParty::Simple.new.connect
   end
   def self.context_connect
-    CloudParty::Context.new
+    Connection.new
   end
 end

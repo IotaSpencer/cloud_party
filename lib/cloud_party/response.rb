@@ -3,9 +3,11 @@
 module CloudParty
   module Response
     def self.included(base)
-      # if base.def
+      # for future
     end
 
-    def initialize(self_object, method_name, endpoint, response); end
+    def initialize(self_object, method_name, endpoint, response)
+      # unknown what to do with this yet
+    end
   end
 end

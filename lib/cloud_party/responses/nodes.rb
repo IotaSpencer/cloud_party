@@ -2,9 +2,14 @@
 
 module CloudParty
   module Responses
+    # Response Node
+    #
+    # This module is to be first ancestor of each node's response objects.
+    #
+    # This being in some way a Permissions class is to be
+    # formed as CloudParty::Responses::Node::Permissions
+    # instead of CloudParty::Responses::ENDPOINT::Permissions
     module Node
-      autoload :Account, 'cloud_party/responses/nodes/account'
-      autoload :Permissions, 'cloud_party/responses/nodes/permissions'
     end
   end
 end
