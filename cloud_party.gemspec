@@ -20,7 +20,7 @@ spec = Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.require_paths = %w[lib]
 
-  s.required_ruby_version = '>= 2.3'
+  s.required_ruby_version = '>= 2'
 
   s.add_development_dependency 'bundler', '~> 1.17.2'
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.6.0'
