@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'rubyflare'
 require 'app_configuration'
 module CloudParty
   class Simple
@@ -31,8 +30,5 @@ module CloudParty
       @api_key
     end
 
-    def connect
-      Rubyflare.connect_with(email, api_key)
-    end
   end
 end
