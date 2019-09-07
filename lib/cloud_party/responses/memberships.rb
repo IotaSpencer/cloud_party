@@ -4,6 +4,7 @@ require 'cloud_party/responses/nodes/memberships'
 module CloudParty
   module Responses
     class Memberships
+      include CloudParty::Response
       def initialize(method_name, endpoint, response)
         @code = response.code
         @body = JSON.parse(response.body, symbolize_names: true)

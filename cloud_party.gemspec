@@ -20,18 +20,19 @@ spec = Gem::Specification.new do |s|
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.require_paths = %w[lib]
 
-  #  spec.required_ruby_version = '>= 2.3'
+  s.required_ruby_version = '>= 2.3'
+
   s.add_development_dependency 'bundler', '~> 1.17.2'
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.6.0'
   s.add_development_dependency 'debase'
+  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'minitest-reporters', '>= 0.5.0'
   s.add_development_dependency 'pry', '~> 0.11.3'
   s.add_development_dependency 'rake', '~> 12.3', '>= 12.3.1'
-  s.add_development_dependency 'rspec', '~> 3.5'
   s.add_development_dependency 'ruby-debug-ide', '~> 0.7.0.beta7'
   s.add_development_dependency 'webmock', '~> 2.1'
 
   s.add_runtime_dependency 'app_configuration'
   s.add_runtime_dependency 'httparty', '~> 0.16.2'
-  s.add_runtime_dependency 'rubyflare'
 end
 # spec

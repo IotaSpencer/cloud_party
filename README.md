@@ -1,7 +1,11 @@
 # CloudParty
 HTTParty based library for Cloudflare
 
+### SonarCloud
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=iotaspencer_gem_cloud_party&metric=alert_status)](https://sonarcloud.io/dashboard?id=cloud_party)
+[![Code Smell](https://sonarcloud.io/api/project_badges/measure?project=iotaspencer_gem_cloud_party&metric=code_smells)](https://sonarcloud.io/dashboard?id=cloud_party)
 
+### Badges
 [![Gem Version](https://badge.fury.io/rb/cloud_party.svg)](https://badge.fury.io/rb/cloud_party)
 [![Code Climate](https://codeclimate.com/github/IotaSpencer/cloud_party/badges/gpa.svg)](https://codeclimate.com/github/IotaSpencer/cloud_party)
 [![Test Coverage](https://codeclimate.com/github/IotaSpencer/cloud_party/badges/coverage.svg)](https://codeclimate.com/github/IotaSpencer/cloud_party/coverage)
@@ -12,19 +16,19 @@ HTTParty based library for Cloudflare
 
 Add this line to your application's Gemfile:
 
-```ruby
+```
 gem 'cloud_party'
 ```
 
 And then execute:
 
-```shell
+```
 $ bundle
 ```
 
 Or install it yourself as:
 
-```shell
+```
 $ gem install cloud_party
 ```
 

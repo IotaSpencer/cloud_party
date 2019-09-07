@@ -1,10 +1,15 @@
 language: ruby
-bundler_args: --jobs=6 --retry=3 --standalone
+bundler_args: "--jobs=6 --retry=3 --standalone"
 script:
-  - echo "Running tests against $(ruby -v) ..."
-  - bundle exec rake -t
+- echo "Running tests against $(ruby -v) ..."
+- bundle exec rake -t
 rvm:
-  - 2.3
-  - 2.4
-  - 2.5
+- 2.3
+- 2.4
+- 2.5
+addons:
+  sonarcloud:
+    organization: iotaspencer-github
+    token:
+      secure: LmYxRG98giIzDDwNdOcgiTK0b5+f+M92672qWhbsXQD9hWQUnPWJpbzRk7+ApjulxIIi28HYqTkS32K4VIPvP8N425idqqoPg98kpjkaG7kqKmj6zXARZSOhW7Qs7c3E0kmGEe10YQi88u75x9caR/aKoL/RmJq2wPCjOqJfVaQczEJb18ULFjLOpdO5AulHNbN3VByjf+miuIM7mztlyPwhH/tXiMxKR5TgTe5L0s2XwCblvxjYD+wQTz538m2CPTqgktlv2FqFxEsjTuZORzALlvBlaFTS/gxYnQhsMUEIE5SfxQ/xuQo1Zg07j8JjTLcTNr9tOBi5Q2mk9sgiLSbJowT/zkQGN6rWizu5NUhJJiVK1IN/B2vnuLCB9XvyeYYrfksxYS36vb2mFLOEt1b/BTjcjVuagc5/3krGR4K16xlyZYoOaAKfYGjmeYKAoNorSWBryZJqZtZA50SroK+2lwEfEokcogz+hbitWWSgUGbIBUowvZP7Sr/J8lWH3887rfANaVziXjmS3G3Dimv12AIdsx5sw3w8Lo7XgZt/P5W+dV6hKpwZvE2NoU8Y7JQyjdHBs6DTrOiIpIk4kgsgeXzgT1ti9VNMZrdlzEbgJKi1CrgvHa7tL9/EjxVBQDJBOBeq5VcoFJRVi/u63FJRlk7QXbrqOXvyDwU4O4Y=
 

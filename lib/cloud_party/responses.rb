@@ -11,18 +11,9 @@ module CloudParty
     autoload :IPs, 'cloud_party/responses/ips'
     autoload :Zones, 'cloud_party/responses/zones'
 
-    module_function
+    module ResponseMethods
 
-    # @param [Result] result_json_object check result type for parsing
-    # @raise
-    def check_result_type(result_json_object)
-      if result_json_object.is_a?(Hash)
-        'Hash'
-      elsif result_json_object.is_a?(Array)
-        'Array'
-      else
-        raise UnRecognizedResultTypeError, result_json_object.class
-      end
     end
   end
+
 end

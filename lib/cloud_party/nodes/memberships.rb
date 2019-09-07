@@ -20,9 +20,8 @@ module CloudParty
 
       def list
         CloudParty::Responses::Memberships.new(:get, '/memberships', self.class.get('/memberships', @options))
-      rescue APIError => e
-        puts e.message
-        puts e.response
+      rescue APIError
+        raise
       end
     end
   end

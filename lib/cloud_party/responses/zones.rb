@@ -3,6 +3,7 @@
 require 'cloud_party/responses/nodes/zones'
 module CloudParty
   module Responses
+    include CloudParty::Response
     # '/zones' endpoint response object
     class Zones
       # @raise [CloudParty::APIError] if the library encountered
@@ -46,12 +47,9 @@ module CloudParty
         end
 
       end
-      attr_reader :code
       attr_reader :errors
       attr_reader :messages
       attr_reader :results
-      attr_reader :body
-      attr_reader :parsed_response
       def successful?
         @success
       end
