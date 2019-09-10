@@ -23,7 +23,7 @@ module CloudParty
             #{endpoint}. Inspect CloudParty::APIError#response
             for further details
           MESSAGE
-          raise CloudParty::APIError.new(message, response)
+          raise CloudParty::Errors::APIError.new(message, response)
         end
         @results = []
         case endpoint
@@ -36,7 +36,7 @@ module CloudParty
           @result = CloudParty::Responses::Result.new(@body[:result])
           @results << @result
         else
-          raise UnRecognizedEndpointError.new(endpoint, self.class)
+          raise Errors::UnRecognizedEndpointError.new(endpoint, self.class)
         end
 
         @errors = []
