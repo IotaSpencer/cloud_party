@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'cloud_party/responses/nodes/zones'
+require 'cloud_party/exception'
+require 'cloud_party/exceptions'
 module CloudParty
   module Responses
     include CloudParty::Response
