@@ -35,9 +35,6 @@ module CloudParty
   class Connection
     include CloudParty::Context
   end
-  def self.simple_connect
-    CloudParty::Simple.new.connect
-  end
   def self.context_connect
     Connection.new
   end
