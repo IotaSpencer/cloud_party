@@ -39,35 +39,6 @@ module CloudParty
       def get(id)
         CloudParty::Responses::Zones.new(:get, '/zones/:id', self.class.get("/zones/#{id}"), @options)
       end
-
-      def add_record(type, name, content, opts, zone:)
-        zone_id = nil
-        options = {
-            type: type,
-            name: name,
-            content: content
-        }
-        ttl = opts.fetch('ttl', nil)
-        priority = opts.fetch('priority', nil)
-        proxied = opts.fetch('proxied', nil)
-        options.merge!(ttl: ttl) unless ttl.nil?
-        options.merge!(priority: priority) unless priority.nil?
-        options.merge!(proxied: proxied) unless proxied.nil?
-        if zone
-          zone_options = {
-              match: 'all',
-              name: zone,
-              order: 'name'
-          }
-          zone_id = CloudParty::Responses::Zones.new(:get, '/zones', get('/zones', query: zone_options), @options).result.first.fetch(:id, nil)
-        end
-
-        CloudParty::Responses::Zones.new(
-            :post,
-            '/zones/',
-            self.class.get("/zones/#{@@zone || zone_id}/dns_records", options),
-            @options)
-      end
     end
   end
 end
