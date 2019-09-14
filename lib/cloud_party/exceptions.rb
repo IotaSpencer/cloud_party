@@ -17,11 +17,11 @@ module CloudParty
     end
 
     class UnknownError < RequestError
-      def initialize(obj:, method:, response:, endpoint: nil, code:)
+      def initialize(message, method, endpoint, code, response)
         super
       end
 
-      def self.error_string
+      def error_string
         <<~HEREDOC
           An error with the request has occurred, please make
           sure the method verb, endpoint, and credentials are
@@ -29,14 +29,14 @@ module CloudParty
         HEREDOC
       end
 
-      def self.extra_string
+      def extra_string
         <<~HEREDOC
           Credentials Context: #{@obj&.class&.cfg}
 
           Method Verb: #{@method}
           Endpoint: #{@endpoint}
           HTTP Status Code: #{@code}
-          Response Body: #{@response.body}
+          Response Body: #{@response&.body}
         HEREDOC
       end
     end
