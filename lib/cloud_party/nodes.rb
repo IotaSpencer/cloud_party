@@ -6,5 +6,6 @@ module CloudParty
     autoload :Memberships, 'cloud_party/nodes/memberships'
     autoload :IPs, 'cloud_party/nodes/ips'
     autoload :Zones, 'cloud_party/nodes/zones'
+    autoload :DNSRecords, 'cloud_party/nodes/dns_records'
   end
 end
