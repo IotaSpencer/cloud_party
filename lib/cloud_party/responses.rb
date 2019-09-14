@@ -10,6 +10,7 @@ module CloudParty
     autoload :Memberships, 'cloud_party/responses/memberships'
     autoload :IPs, 'cloud_party/responses/ips'
     autoload :Zones, 'cloud_party/responses/zones'
+    autoload :DNSRecords, 'cloud_party/responses/dns_records'
 
     module ResponseMethods
 
