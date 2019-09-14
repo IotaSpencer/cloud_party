@@ -26,13 +26,13 @@ module CloudParty
           raise CloudParty::Errors::APIError.new(message, response)
         end
         @results = []
-        case endpoint
-        when '/zones'
-
+        if endpoint =~ /^\/zones\/?$/
           @body[:result].each do |res|
             @results << CloudParty::Responses::Result.new(res)
           end
-        when '/zones/:id'
+        elsif endpoint =~ /^\/zones\/:id\/dns_records\/?$/
+          raise CloudParty::Errors::RequestError.new("Use CloudParty::Nodes::DNSRecords for this endpoint.", method_name, endpoint, @code, nil)
+        elsif endpoint =~ /^\/zones\/:id\/?$/
           @result = CloudParty::Responses::Result.new(@body[:result])
           @results << @result
         else
@@ -81,14 +81,14 @@ module CloudParty
       end
     end
     class Result
-      attr_reader :id, :name, :development_mode, :original_registar, :original_dnshost, :status, :paused, :type, :permissions
+      attr_reader :id, :name, :development_mode, :original_registar, :original_dnshost, :status, :paused, :type, :permissions, :content
       def initialize(result)
         @result = result
         @result.each do |k, v|
-          @plan = CloudParty::Responses::Node::Plan.new(@result.dig(:plan))
-          @plan_pending = CloudParty::Responses::Node::PlanPending.new(@result.dig(:plan_pending))
-          @account = CloudParty::Responses::Node::Account.new(@result.dig(:account))
-          @permissions = CloudParty::Responses::Node::Permissions.new(@result.dig(:permissions))
+          @plan = CloudParty::Responses::Node::Plan.new(@result.dig(:plan)) if @result.fetch(:plan, nil)
+          @plan_pending = CloudParty::Responses::Node::PlanPending.new(@result.dig(:plan_pending)) if @result.fetch(:plan_pending, nil)
+          @account = CloudParty::Responses::Node::Account.new(@result.dig(:account)) if @result.fetch(:account, nil)
+          @permissions = CloudParty::Responses::Node::Permissions.new(@result.dig(:permissions)) if @result.fetch(:permissions, nil)
           instance_variable_set(:"@#{k}", v) unless %i[plan plan_pending account permissions].include?(k)
         end
       end
