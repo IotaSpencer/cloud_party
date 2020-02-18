@@ -32,10 +32,12 @@ module CloudParty
         @options = options
       end
 
-      def list
+      def list_zones
         CloudParty::Responses::Zones.new(:get, '/zones', self.class.get('/zones'), @options)
       end
-
+      def delete(id)
+        CloudParty::Responses::Zones.new(:delete, '/zones/:id', self.class.delete(""))
+      end
       def get(id)
         CloudParty::Responses::Zones.new(:get, '/zones/:id', self.class.get("/zones/#{id}"), @options)
       end

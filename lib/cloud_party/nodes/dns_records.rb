@@ -91,7 +91,7 @@ module CloudParty
         CloudParty::Responses::DNSRecords.new(
             :delete,
             '/zones/:id/dns_records/:identifier',
-            self.class.delete("/zones/#{zone_id}")
+            self.class.delete("/zones/#{zone_id}/dns_records/#{id}")
             )
       end
     end
