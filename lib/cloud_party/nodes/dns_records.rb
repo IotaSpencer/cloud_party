@@ -6,8 +6,10 @@
 # Created: 9/14/19
 #
 # License is in project root, MIT License is in use.
+require 'cloud_party/config'
 require 'cloud_party/context'
 require 'cloud_party/responses'
+CloudParty::Config.new
 module CloudParty
   module Nodes
     class DNSRecords

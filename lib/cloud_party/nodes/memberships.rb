@@ -1,7 +1,8 @@
 # frozen_string_literal: true
-
+require 'cloud_party/config'
 require 'cloud_party/context'
 require 'cloud_party/responses'
+CloudParty::Config.new
 module CloudParty
   module Nodes
     class Memberships
