@@ -7,9 +7,8 @@ module CloudParty
     class Accounts
       include CloudParty::Context
       include HTTParty
-      base_uri 'api.cloudflare.com:443/client/v4'
-      headers 'X-Auth-Email' => cfg.email,
-              'X-Auth-Key' => cfg.api_key,
+      base_uri 'https://api.cloudflare.com/client/v4'
+      headers 'Authorization' => "Bearer #{CloudParty::Config.token}",
               'Content-Type' => 'application/json',
               'User-Agent' => "CloudParty/#{CloudParty::VERSION}"
 

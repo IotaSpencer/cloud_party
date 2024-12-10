@@ -20,7 +20,7 @@ module CloudParty
         unless successful?
           message = <<~MESSAGE
             Unable to #{method_name.to_s.upcase} to endpoint:
-            #{endpoint}. Inspect CloudParty::APIError#response
+            #{endpoint}. Inspect/Rescue CloudParty::Errors::APIError#response
             for further details
           MESSAGE
           raise CloudParty::Errors::APIError.new(message, response)

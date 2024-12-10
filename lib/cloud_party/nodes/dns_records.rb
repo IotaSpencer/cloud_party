@@ -13,9 +13,8 @@ module CloudParty
     class DNSRecords
       include CloudParty::Context
       include HTTParty
-      base_uri 'api.cloudflare.com:443/client/v4'
-      headers 'X-Auth-Email' => cfg.email,
-              'X-Auth-Key' => cfg.api_key,
+      base_uri 'https://api.cloudflare.com/client/v4'
+      headers 'Authorization' => "Bearer #{CloudParty::Config.token}",
               'Content-Type' => 'application/json',
               'User-Agent' => "CloudParty/#{CloudParty::VERSION}"
 
@@ -46,14 +45,28 @@ module CloudParty
         @options = options
       end
 
-      def list
-        CloudParty::Responses::DNSRecords.new(:get, '/zones/:id/dns_records', self.class.get("/zones/#{@@zone}/dns_records", @options), @options)
+      def list(zone)
+        zone_id = self.id_by_name(zone)
+        CloudParty::Responses::DNSRecords.new(:get, '/zones/:id/dns_records', self.class.get("/zones/#{zone_id}/dns_records", @options), @options)
       end
 
       def get(id)
-        CloudParty::Responses::DNSRecords.new(:get, '/zones/:id/dns_records', self.class.get("/zones/#{@@zone}/dns_records", @options), @options)
+        CloudParty::Responses::DNSRecords.new(:get, '/zones/:id/dns_records', self.class.get("/zones/#{zone_id}/dns_records", @options), @options)
       end
 
+
+      # Add a new DNS record to the specified zone
+      #
+      # @param type [String] DNS record type
+      # @param name [String] DNS record name
+      # @param content [String] DNS record content
+      # @param opts [Hash] Additional options
+      # @option opts [Integer] :ttl Time to live
+      # @option opts [Integer] :priority Priority
+      # @option opts [Boolean] :proxied Whether the record is proxied
+      # @param zone [String] Zone to add DNS record to
+      #
+      # @return [CloudParty::Responses::DNSRecords] DNS records response object
       def add(type, name, content, opts, zone:)
         zone_id = nil
         options = {

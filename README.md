@@ -1,9 +1,6 @@
 # CloudParty
 HTTParty based library for Cloudflare
 
-### SonarCloud
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=iotaspencer_gem_cloud_party&metric=alert_status)](https://sonarcloud.io/dashboard?id=cloud_party)
-[![Code Smell](https://sonarcloud.io/api/project_badges/measure?project=iotaspencer_gem_cloud_party&metric=code_smells)](https://sonarcloud.io/dashboard?id=cloud_party)
 
 ### Badges
 [![Gem Version](https://badge.fury.io/rb/cloud_party.svg)](https://badge.fury.io/rb/cloud_party)
@@ -50,13 +47,14 @@ Two configurations are applicable for setup currently,
 ```yaml
 email: 'email@here.com'
 api-key: 'abcdefabcdef1234561234567890'
+token: 'ABCDEFG123456789ABCDEF
 ```
 </p>
 </details>
 
 ```ruby
 require 'cloud_party'
-connection = CloudParty.connect
+connection = 
 ```
 
 #### GET your user account details

@@ -8,7 +8,7 @@ spec = Gem::Specification.new do |s|
   s.name          = 'cloud_party'
   s.version       = CloudParty::VERSION
   s.authors       = ['Ken Spencer']
-  s.email         = ['me+gems@iotaspencer.me']
+  s.email         = ['me@iotaspencer.me']
 
   s.summary       = "Thin Ruby wrapper around Cloudflare's V4 API. Based on https://github.com/trev/rubyflare"
   s.description   = "Thin Ruby wrapper around Cloudflare's V4 API for good measure!"
@@ -22,15 +22,15 @@ spec = Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2'
 
-  s.add_development_dependency 'bundler', '~> 1.17.2'
+  s.add_development_dependency 'bundler', '~> 2.5.22'
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.6.0'
-  s.add_development_dependency 'debase'
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'minitest-reporters', '>= 0.5.0'
   s.add_development_dependency 'pry', '~> 0.11.3'
   s.add_development_dependency 'rake', '~> 12.3', '>= 12.3.1'
-  s.add_development_dependency 'ruby-debug-ide', '~> 0.7.0.beta7'
   s.add_development_dependency 'webmock', '~> 2.1'
+  s.add_development_dependency 'rspec-core', '~> 3.13.0'
+  s.add_development_dependency 'rspec', '~> 3.13.0'
 
   s.add_runtime_dependency 'app_configuration'
   s.add_runtime_dependency 'httparty', '~> 0.16.2'
