@@ -130,7 +130,7 @@ module CloudParty
       # Default: A
       # Example: A  
       # @return [CloudParty::Responses::DNSRecords] DNS records response object
-      def list(zone, opts = {})
+      def list(zone, opts)
         zone_id = DNSRecords.zone_id_by_name(zone)
         
         CloudParty::Responses::DNSRecords.new(:get, '/zones/:id/dns_records', self.class.get("/zones/#{zone_id}/dns_records", query: opts), @options)
